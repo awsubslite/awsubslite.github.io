@@ -37,7 +37,7 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
 
     $scope.nextUrl = function() {
         if (query.page == undefined) {
-            return '/index.html?page=2';
+            return '/index.html?page=1';
         } else {
             if (/^\d+$/.test(query.page)) {
                 var i = parseInt(query.page) + 1;
