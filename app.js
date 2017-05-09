@@ -1,6 +1,6 @@
 var website = {
     url: 'http://awsubs.co/',
-    api: 'https://f464d0c9.ngrok.io/api/'
+    api: 'https://a56b6736.ngrok.io/api/'
 };
 function getQueryParams() {
     var qs = document.location.search;
