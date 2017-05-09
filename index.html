@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="awsubslite-app">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+		<title>AWSubs Lite</title>
+
+		<!-- Add to homescreen for Chrome on Android -->
+		<meta name="mobile-web-app-capable" content="yes">
+		<link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+		<!-- Add to homescreen for Safari on iOS -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="Material Design Lite">
+		<link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+		<!-- Tile icon for Win8 (144x144 + tile color) -->
+		<meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+		<meta name="msapplication-TileColor" content="#3372DF">
+
+		<link rel="shortcut icon" href="images/favicon.png">
+
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		
+		<link rel="stylesheet" type="text/css" href="bower_components/material-design-lite/material.min.css">
+
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/bootstrap.css">
+
+		<style>
+		#view-source {
+			position: fixed;
+			display: block;
+			right: 0;
+			bottom: 0;
+			margin-right: 40px;
+			margin-bottom: 40px;
+			z-index: 900;
+		}
+		</style>
+	</head>
+
+
+	<body class="awsubslite-app mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+			<header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+				<div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
+				<div class="mdl-layout--large-screen-only mdl-layout__header-row">
+				  <h3><i class="material-icons">flash_on</i> AWSubs Lite</h3>
+				</div>
+				<div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
+				<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+					<a href="#overview" class="mdl-layout__tab is-active">Overview</a>
+					<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="reload">
+						<i class="material-icons" role="presentation">refresh</i>
+						<span class="visuallyhidden">Add</span>
+					</button>
+				</div>
+			</header>
+		<main class="mdl-layout__content">
+		<div class="mdl-layout__tab-panel is-active" id="overview">
+			<!-- Section Start -->
+			<section class="container" ng-controller="awsubslite-app-controller"
+			style="margin-bottom: 200px;">
+				<div class="row">
+					<div class="col-md-4 hide-sm hide-xs">
+						<form action="#" >
+							<h4>Search</h4>
+							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+								<input class="mdl-textfield__input" type="text" id="search">
+								<label class="mdl-textfield__label" for="search">Cari Disini</label>
+							</div>
+						</form>
+					</div>
+					<div class="col-md-8 col-xs-12">
+						<h4>List Update</h4>
+
+						<div class="mdl-spinner mdl-js-spinner is-active" id="loading-indicator" data-loading></div>
+						
+						<section class="mdl-grid mdl-grid--no-spacing mdl-shadow--2dp relative"
+						ng-repeat="anime in animes"
+						>
+							<header 
+							class="section__play-btn mdl-cell mdl-cell--4-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white" 
+							style="background: url({{anime.thumbnail}});background-size: cover;">
+							</header>
+							<div class="mdl-card mdl-cell mdl-cell--8-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+								<div class="mdl-card__supporting-text">
+									<a href="{{anime.link}}" style="text-decoration: none;"><h4>{{anime.title}}</h4></a>
+									Release Date: {{anime.release}}
+								</div>
+								<div class="mdl-card__actions">
+									<a href="{{anime.link}}" class="mdl-button">Read More</a>
+								</div>
+							</div>
+						</section>
+
+						<div class="row" style="margin-top: 16px;">
+							<a class="mdl-button mdl-js-button mdl-button--primary" style="margin: 4px 8px;float:right;" ng-href="{{nextUrl()}}">Next <i class="material-icons">navigate_next</i></a>
+						</div>
+					</div>
+				</div>
+			</section>
+			
+		</div>
+		<div class="mdl-layout__tab-panel" id="features">
+			<section class="section--center mdl-grid mdl-grid--no-spacing">
+			<div class="mdl-cell mdl-cell--12-col">
+
+			</div>
+			</section>
+		</div>
+
+
+		<footer class="mdl-mega-footer">
+			<div class="mdl-mega-footer--bottom-section">
+				<div class="mdl-logo">AWSubs Lite &copy; 2017</div>
+				<ul class="mdl-mega-footer--link-list">
+					<li><a href="http://awsubs.co">Original Website</a></li>
+					<li><a href="#">Help</a></li>
+					<li><a href="https://facebook.com/ryan.hac">Author</a></li>
+				</ul>
+			</div>
+		</footer>
+		<!-- ./Footer -->
+		</main>
+	</div>
+
+	<!-- Overlay -->
+	<a href="http://awsubs.co" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Goto AWSubs Website</a>
+	
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="bower_components/material-design-lite/material.min.js"></script>
+	
+	<script src="app.js"></script>
+	</body>
+</html>
