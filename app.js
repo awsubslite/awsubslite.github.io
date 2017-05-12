@@ -1,7 +1,15 @@
 var website = {
     url: 'http://awsubs.co/',
-    api: 'https://a56b6736.ngrok.io/api/'
+    api: ''
 };
+$.ajax({
+    url: "https://api.nyancode.web.id/awsubsurl.php?do=get",
+    method: "GET"
+}).success(function(response) {
+    if (response.status) {
+        website.api = response.ngrokUrl;
+    }
+});
 function getQueryParams() {
     var qs = document.location.search;
     qs = qs.split('+').join(' ');
