@@ -1,15 +1,8 @@
 var website = {
     url: 'http://awsubs.co/',
+    server: 'https://api.nyancode.web.id/awsubsurl.php?do=get',
     api: ''
 };
-$.ajax({
-    url: "https://api.nyancode.web.id/awsubsurl.php?do=get",
-    method: "GET"
-}).success(function(response) {
-    if (response.status) {
-        website.api = response.ngrokUrl;
-    }
-});
 function getQueryParams() {
     var qs = document.location.search;
     qs = qs.split('+').join(' ');
@@ -58,9 +51,16 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
     var query = getQueryParams();
     $scope.details;
 
-    $http.get(website.api + 'getPage/' + query.page).then(function (response) {
-        $scope.details = response.data;
+    $http.get(website.server).then(function(res, error) {
+        if (!error) {
+            website.api = res.data.ngrokUrl;
+
+            $http.get(website.api + 'getPage/' + query.page).then(function (response) {
+                $scope.details = response.data;
+            });
+        }
     });
+    
 }).directive('loading', ['$http' ,function ($http) {
     return {
         restrict: 'A',
