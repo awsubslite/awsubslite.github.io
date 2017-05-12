@@ -1,7 +1,6 @@
 var website = {
     url: 'http://awsubs.co/',
-    server: 'https://api.nyancode.web.id/awsubsurl.php?do=get',
-    api: ''
+    server: 'https://api.nyancode.web.id/awsubsurl.php?do=get'
 };
 function getQueryParams() {
     var qs = document.location.search;
@@ -21,21 +20,22 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
     var query = getQueryParams();
     $scope.animes;
 
-    $http.get(website.server).then(function(res, error) {
-        if (!error) {
-            website.api = res.data.ngrokUrl;
-        }
-    });
+    
     if (query.page == undefined) {
-        $http.get(website.api + 'getHome').then(function (response) {
-            $scope.animes = response.data.anime;
+        $http.get(website.server).then(function(res) {
+            $http.get(res.data.ngrokUrl + 'getHome').then(function (response) {
+                $scope.animes = response.data.anime;
+            });
         });
+
     } else {
         if (/^\d+$/.test(query.page)) {
             var i = parseInt(query.page) + 1;
 
-            $http.get(website.api + 'getHome/' + i).then(function (response) {
-                $scope.animes = response.data.anime;
+            $http.get(website.server).then(function(res) {
+                $http.get(res.data.ngrokUrl + 'getHome/' + i).then(function (response) {
+                    $scope.animes = response.data.anime;
+                });
             });
         }
     }
@@ -55,14 +55,10 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
     var query = getQueryParams();
     $scope.details;
 
-    $http.get(website.server).then(function(res, error) {
-        if (!error) {
-            website.api = res.data.ngrokUrl;
-
-            $http.get(website.api + 'getPage/' + query.page).then(function (response) {
-                $scope.details = response.data;
-            });
-        }
+    $http.get(website.server).then(function(res) {
+        $http.get(res.data.ngrokUrl + 'getPage/' + query.page).then(function (response) {
+            $scope.details = response.data;
+        });
     });
     
 }).directive('loading', ['$http' ,function ($http) {
