@@ -30,7 +30,7 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
 
     } else {
         if (/^\d+$/.test(query.page)) {
-            var i = parseInt(query.page) + 1;
+            var i = parseInt(query.page);
 
             $http.get(website.server).then(function(res) {
                 $http.get(res.data.ngrokUrl + 'getHome/' + i).then(function (response) {
@@ -100,3 +100,14 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
         }
     };
 }]);
+
+angular.module('awsubslite-app', []).directive('backImg', function(){
+    return function(scope, element, attrs){
+        attrs.$observe('backImg', function(value) {
+            element.css({
+                'background-image': 'url(' + value +')',
+                'background-size' : 'cover'
+            });
+        });
+    };
+});
