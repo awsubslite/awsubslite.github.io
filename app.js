@@ -21,7 +21,11 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
     var query = getQueryParams();
     $scope.animes;
 
-
+    $http.get(website.server).then(function(res, error) {
+        if (!error) {
+            website.api = res.data.ngrokUrl;
+        }
+    });
     if (query.page == undefined) {
         $http.get(website.api + 'getHome').then(function (response) {
             $scope.animes = response.data.anime;
