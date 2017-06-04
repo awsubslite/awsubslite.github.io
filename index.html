@@ -3,9 +3,9 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+		<meta name="description" content="A faster web get Anime from Original Website">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-		<title>AWSubs Lite</title>
+		<title>Nyanime Lite</title>
 
 		<!-- Add to homescreen for Chrome on Android -->
 		<meta name="mobile-web-app-capable" content="yes">
@@ -45,27 +45,27 @@
 	</head>
 
 
-	<body class="awsubslite-app mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+	<body class="awsubslite-app mdl-color--grey-100 mdl-color-text--grey-700 mdl-base" ng-controller="awsubslite-app-controller">
 		<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 			<header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
 				<div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
 				<div class="mdl-layout--large-screen-only mdl-layout__header-row">
-				  <h3><i class="material-icons">flash_on</i> AWSubs Lite</h3>
+				  <h3><i class="material-icons">flash_on</i> Nyanime Lite</h3>
 				</div>
 				<div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
 				<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-					<a href="#overview" class="mdl-layout__tab is-active">Overview</a>
-					<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="reload">
+					<a href="/index.html?state=awsubs" ng-click="state = 'awsubs'" class="mdl-layout__tab" ng-class="{'is-active': currentStateAwsubs()}">AWSubs</a>
+					<a href="/index.html?state=samehadaku" ng-click="state = 'samehadaku'" class="mdl-layout__tab" ng-class="{'is-active': currentStateSamehada()}">Samehadaku</a>
+					<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="reload" ng-click="reloadPage()">
 						<i class="material-icons" role="presentation">refresh</i>
 						<span class="visuallyhidden">Add</span>
 					</button>
 				</div>
 			</header>
 		<main class="mdl-layout__content">
-		<div class="mdl-layout__tab-panel is-active" id="overview">
+		<div class="mdl-layout__tab-panel is-active" id="awsubs-page">
 			<!-- Section Start -->
-			<section class="container" ng-controller="awsubslite-app-controller"
-			style="margin-bottom: 200px;">
+			<section class="container" style="margin-bottom: 200px;">
 				<div class="row">
 					<div class="col-md-4 hide-sm hide-xs">
 						<form action="#" >
@@ -107,7 +107,7 @@
 			</section>
 			
 		</div>
-		<div class="mdl-layout__tab-panel" id="features">
+		<div class="mdl-layout__tab-panel" id="samehadaku-page">
 			<section class="section--center mdl-grid mdl-grid--no-spacing">
 			<div class="mdl-cell mdl-cell--12-col">
 
@@ -136,6 +136,6 @@
 	<script src="https://awsubslite.github.io/bower_components/angular/angular.min.js"></script>
 	<script type="text/javascript" src="https://awsubslite.github.io/bower_components/material-design-lite/material.min.js"></script>
 	
-	<script src="https://awsubslite.github.io/app.js"></script>
+	<script src="https://awubslite.github.io/app.js"></script>
 	</body>
 </html>

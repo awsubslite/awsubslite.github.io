@@ -5,23 +5,19 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-        <title>AWSubs Lite</title>
+        <title>Nyanime Lite</title>
 
         <!-- Add to homescreen for Chrome on Android -->
         <meta name="mobile-web-app-capable" content="yes">
-        <link rel="icon" sizes="192x192" href="images/android-desktop.png">
 
         <!-- Add to homescreen for Safari on iOS -->
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta name="apple-mobile-web-app-title" content="Material Design Lite">
-        <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+        <meta name="apple-mobile-web-app-title" content="Nyanime Lite">
 
         <!-- Tile icon for Win8 (144x144 + tile color) -->
         <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
         <meta name="msapplication-TileColor" content="#3372DF">
-
-        <link rel="shortcut icon" href="images/favicon.png">
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -32,7 +28,8 @@
         <link rel="stylesheet" href="https://awsubslite.github.io/css/bootstrap.css">
 
         <style>
-        #view-source {
+        #awsubs-source,
+        #samehadaku-source {
             position: fixed;
             display: block;
             right: 0;
@@ -41,6 +38,10 @@
             margin-bottom: 40px;
             z-index: 900;
         }
+        #samehadaku-source {
+            margin-bottom: 100px;
+        }
+
         .awsubslite-app main > .mdl-layout__tab-panel {
             padding: 0;
         }
@@ -97,11 +98,12 @@
             <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
                 <div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
                 <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-                  <h3><i class="material-icons">flash_on</i> AWSubs Lite</h3>
+                  <h3><i class="material-icons">flash_on</i> Nyanime Lite</h3>
                 </div>
                 <div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
                 <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-                    <a href="#overview" class="mdl-layout__tab is-active">Overview</a>
+                    <a href="/index.html?state=awsubs" ng-click="state = 'awsubs'" class="mdl-layout__tab" ng-class="{'is-active': currentStateAwsubs()}">AWSubs</a>
+                    <a href="/index.html?state=samehadaku" ng-click="state = 'samehadaku'" class="mdl-layout__tab" ng-class="{'is-active': currentStateSamehada()}">Samehadaku</a>
                 </div>
             </header>
         <main class="mdl-layout__content">
@@ -137,9 +139,9 @@
 
         <footer class="mdl-mega-footer">
             <div class="mdl-mega-footer--bottom-section">
-                <div class="mdl-logo">AWSubs Lite &copy; 2017</div>
+                <div class="mdl-logo">Nyanime Lite &copy; 2017</div>
                 <ul class="mdl-mega-footer--link-list">
-                    <li><a href="http://awsubs.co">Original Website</a></li>
+                    <li><a href="#">Thanks to Awsubs &and; Samehadaku</a></li>
                     <li><a href="#">Help</a></li>
                     <li><a href="https://facebook.com/ryan.hac">Author</a></li>
                 </ul>
@@ -150,11 +152,12 @@
     </div>
 
     <!-- Overlay -->
-    <a href="http://awsubs.co" target="_blank" id="view-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Goto AWSubs Website</a>
+    <a href="http://awsubs.co" target="_blank" id="awsubs-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Goto AWSubs Website</a>
+    <a href="http://samehadaku.net" target="_blank" id="samehadaku-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Goto Samehadaku Website</a>
     
     <script src="https://awsubslite.github.io/bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="https://awsubslite.github.io/bower_components/material-design-lite/material.min.js"></script>
     
-    <script src="https://awsubslite.github.io/app.js"></script>
+    <script src="https://awubslite.github.io/app.js"></script>
     </body>
 </html>
