@@ -127,7 +127,7 @@
                             <div class="row" ng-repeat="item in details.downloads" style="padding-bottom: 8px;">
                                 <h5>{{item.title}}</h5><br>
                                 <div class="row">
-                                    <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-repeat="button in item.link" href="{{button.link}}" style="margin: 4px 8px;"><i class="material-icons">file_download</i> {{button.title}}</a>
+                                    <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" ng-repeat="button in item.link" href="{{button.link}}" style="margin: 4px 8px;max-width: 200px"><i class="material-icons">file_download</i> {{button.title}}</a>
                                 </div>
                             </div>
                         </div>
