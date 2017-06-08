@@ -129,7 +129,7 @@
                                 <h5>{{item.title}}</h5><br>
                                 <div class="row">
                                     <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast" ng-repeat="button in item.link" href="{{button.link}}" style="margin: 4px 8px;max-width: 200px;color: #FFF !important;text-align: left;  "><i class="material-icons">file_download</i> {{button.title}}</a>
-                                    <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-repeat="button in item.link" href="{{button.link}}" style="margin: 4px 8px;max-width: 200px;text-align: left;  "><i class="material-icons">file_download</i> {{button.title}}</a>
+                                    <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" ng-repeat="button in item.link" href="{{button.link}}" style="margin: 4px 8px;max-width: 200px;text-align: left;  ">{{button.title}}</a>
                                 </div>
                             </div>
                         </div>
