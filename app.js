@@ -1,10 +1,13 @@
 var website = {
 	server: 'https://api.nyancode.web.id/awsubsurl.php?do=get',
 	awsubs: {
-		url: 'http://awsubs.co/'
+		url: 'http://awsubs.me/'
 	},
 	samehadaku: {
 		url: 'https://samehadaku.net/'
+	},
+	conanwebid: {
+		url: 'http://conan.web.id'
 	}
 };
 function getQueryParams() {
@@ -37,6 +40,9 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
 	};
 	$scope.currentStateSamehada = function() {
 		return (query.state == "samehadaku") ? true : false;
+	};
+	$scope.currentStateConanWebId = function() {
+		return (query.state == "conanwebid") ? true : false;
 	};
 
 	if (query.page == undefined) {
@@ -83,6 +89,9 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
 	};
 	$scope.currentStateSamehada = function() {
 		return (query.state == "samehadaku") ? true : false;
+	};
+	$scope.currentStateConanWebId = function() {
+		return (query.state == "conanwebid") ? true : false;
 	};
 
 	$http.get(website.server).then(function(res) {
