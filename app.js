@@ -54,6 +54,7 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
 	if (query.page == undefined) {
 		$http.get(website.server + $scope.state + '/getHome').then(function (response) {
 			$scope.animes = response.data.anime;
+			$scope.state = query.state;
 		});
 
 	} else {
@@ -101,6 +102,7 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
 
 	$http.get(website.server +  $scope.state + '/getPage/' + query.page).then(function (response) {
 		$scope.details = response.data;
+
 		$scope.description = "Free Download Anime " + $scope.details.title + " Nyanime Lite, Nyanime Lite Download" + $scope.details.detail;
 		$scope.keyword = $scope.details.title + ",Nyanime Lite,Free Download Anime " + $scope.details.title + ",Website Mirror Anime,"+ $scope.state;
 		$scope.canonical = document.location.href;
