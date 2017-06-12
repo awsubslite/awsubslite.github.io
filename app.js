@@ -1,5 +1,5 @@
 var website = {
-	server: 'https://api.nyancode.web.id/awsubsurl.php?do=get',
+	server: 'https://nyanime-lite-ryanaunur.c9users.io:8081/api/',
 	awsubs: {
 		url: 'http://awsubs.me/'
 	},
@@ -8,6 +8,9 @@ var website = {
 	},
 	conanwebid: {
 		url: 'http://conan.web.id'
+	},
+	oploverz: {
+		url: 'http://www.oploverz.in'
 	}
 };
 function getQueryParams() {
@@ -44,22 +47,21 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
 	$scope.currentStateConanWebId = function() {
 		return (query.state == "conanwebid") ? true : false;
 	};
+	$scope.currentStateOploverz = function() {
+		return (query.state == "oploverz") ? true : false;
+	};
 
 	if (query.page == undefined) {
-		$http.get(website.server).then(function(res) {
-			$http.get(res.data.ngrokUrl + $scope.state + '/getHome').then(function (response) {
-				$scope.animes = response.data.anime;
-			});
+		$http.get(website.server + $scope.state + '/getHome').then(function (response) {
+			$scope.animes = response.data.anime;
 		});
 
 	} else {
 		if (/^\d+$/.test(query.page)) {
 			var i = parseInt(query.page);
 
-			$http.get(website.server).then(function(res) {
-				$http.get(res.data.ngrokUrl + $scope.state + '/getHome/' + i).then(function (response) {
-					$scope.animes = response.data.anime;
-				});
+			$http.get(website.server + $scope.state + '/getHome/' + i).then(function (response) {
+				$scope.animes = response.data.anime;
 			});
 		}
 	}
@@ -93,11 +95,12 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
 	$scope.currentStateConanWebId = function() {
 		return (query.state == "conanwebid") ? true : false;
 	};
+	$scope.currentStateOploverz = function() {
+		return (query.state == "oploverz") ? true : false;
+	};
 
-	$http.get(website.server).then(function(res) {
-		$http.get(res.data.ngrokUrl +  $scope.state + '/getPage/' + query.page).then(function (response) {
-			$scope.details = response.data;
-		});
+	$http.get(website.server +  $scope.state + '/getPage/' + query.page).then(function (response) {
+		$scope.details = response.data;
 	});
 	
 }).directive('loading', ['$http' ,function ($http) {
