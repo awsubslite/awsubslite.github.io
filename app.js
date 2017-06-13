@@ -39,19 +39,15 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
 	$scope.state = query.state;
 
 	$scope.currentStateAwsubs = function() {
-		$scope.state = "awsubs";
 		return (query.state == "awsubs") ? true : false;
 	};
 	$scope.currentStateSamehada = function() {
-		$scope.state = "samehadaku";
 		return (query.state == "samehadaku") ? true : false;
 	};
 	$scope.currentStateConanWebId = function() {
-		$scope.state = "conanwebid";
 		return (query.state == "conanwebid") ? true : false;
 	};
 	$scope.currentStateOploverz = function() {
-		$scope.state = "oploverz";
 		return (query.state == "oploverz") ? true : false;
 	};
 
