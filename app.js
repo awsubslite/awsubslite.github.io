@@ -100,8 +100,7 @@ angular.module('awsubslite-app', ['ImgCache']).controller('awsubslite-app-contro
 	};
 
 	$http.get({
-		url: website.server +  $scope.state + '/getPage/' + query.page,
-		cache: true
+		url: website.server +  $scope.state + '/getPage/' + query.page
 	}).then(function (response) {
 		$scope.details = response.data;
 
