@@ -99,9 +99,7 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
 		return (query.state == "oploverz") ? true : false;
 	};
 
-	$http.get({
-		url: website.server +  $scope.state + '/getPage/' + query.page,
-	}).then(function (response) {
+	$http.get(website.server +  $scope.state + '/getPage/' + query.page).then(function (response) {
 		$scope.details = response.data;
 
 		$scope.description = "Free Download Anime " + $scope.details.title + " Nyanime Lite, Nyanime Lite Download" + $scope.details.detail;
