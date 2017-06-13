@@ -27,7 +27,7 @@ function getQueryParams() {
 }
 
 
-angular.module('awsubslite-app', []).controller('awsubslite-app-controller', function($scope, $http) {
+angular.module('awsubslite-app', ['ImgCache']).controller('awsubslite-app-controller', function($scope, $http) {
 	var query = getQueryParams();
 	$scope.animes;
 
@@ -148,4 +148,15 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
 			});
 		}
 	};
-}]);
+}]).config(function(ImgCacheProvider) {
+
+    // set single options
+    ImgCacheProvider.setOption('debug', true);
+    ImgCacheProvider.setOption('usePersistentCache', true);
+
+    // or more options at once
+    ImgCacheProvider.setOptions({
+        debug: true,
+        usePersistentCache: true
+    });
+});

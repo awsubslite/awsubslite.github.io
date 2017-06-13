@@ -95,7 +95,7 @@
 						>
 							<header 
 							class="section__play-btn mdl-cell mdl-cell--4-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white" 
-							ng-style="{'background':'url({{anime.thumbnail}}) center/cover'}">
+							img-cache bg-src="{{imgUrl}}">
 							</header>
 							<div class="mdl-card mdl-cell mdl-cell--8-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
 								<div class="mdl-card__supporting-text">
@@ -143,9 +143,11 @@
     <a href="http://awsubs.me" target="_blank" id="awsubs-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Goto AWSubs Website</a>
     <a href="http://samehadaku.net" target="_blank" id="samehadaku-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Goto Samehadaku Website</a>
 	
-	 <script src="https://cdn.rawgit.com/awsubslite/awsubslite.github.io/f86be915/bower_components/angular/angular.min.js"></script>
+	<script src="https://cdn.rawgit.com/awsubslite/awsubslite.github.io/f86be915/bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="https://cdn.rawgit.com/awsubslite/awsubslite.github.io/f86be915/bower_components/material-design-lite/material.min.js"></script>
-	
+	<script src="bower_components/imgcache.js/js/imgcache.js"></script>
+	<script src="bower_components/angular-imgcache.js/angular-imgcache.js"></script>
+
 	<script src="app.js"></script>
 	</body>
 </html>
