@@ -27,7 +27,7 @@ function getQueryParams() {
 }
 
 
-angular.module('awsubslite-app', ['ImgCache']).controller('awsubslite-app-controller', function($scope, $http) {
+angular.module('awsubslite-app', []).controller('awsubslite-app-controller', function($scope, $http) {
 	var query = getQueryParams();
 	$scope.animes;
 
@@ -100,7 +100,7 @@ angular.module('awsubslite-app', ['ImgCache']).controller('awsubslite-app-contro
 	};
 
 	$http.get({
-		url: website.server +  $scope.state + '/getPage/' + query.page
+		url: website.server +  $scope.state + '/getPage/' + query.page,
 	}).then(function (response) {
 		$scope.details = response.data;
 
@@ -147,15 +147,4 @@ angular.module('awsubslite-app', ['ImgCache']).controller('awsubslite-app-contro
 			});
 		}
 	};
-}]).config(function(ImgCacheProvider) {
-
-    // set single options
-    ImgCacheProvider.setOption('debug', true);
-    ImgCacheProvider.setOption('usePersistentCache', true);
-
-    // or more options at once
-    ImgCacheProvider.setOptions({
-        debug: true,
-        usePersistentCache: true
-    });
-});
+}]);
