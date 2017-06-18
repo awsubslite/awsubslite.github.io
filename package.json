@@ -1,6 +1,6 @@
 {
   "name": "nyanime-lite-ui",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "Website Mirror dengan Kualitas Lite",
   "main": "gulpfile.js",
   "dependencies": {
