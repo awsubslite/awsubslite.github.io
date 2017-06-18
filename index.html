@@ -48,7 +48,7 @@
             margin-bottom: 100px;
         }
 		</style>
-		<script src="https://cdn.rawgit.com/awsubslite/awsubslite.github.io/37d59a42/reaksi.js" async></script>
+		<script src="reaksi.js" async></script>
 	</head>
 
 
@@ -61,90 +61,101 @@
 				</div>
 				<div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
 				<div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-					<a href="/index.html?state=awsubs" ng-click="state = 'awsubs'" class="mdl-layout__tab" ng-class="{'is-active': currentStateAwsubs()}">AWSubs</a>
-					<a href="/index.html?state=samehadaku" ng-click="state = 'samehadaku'" class="mdl-layout__tab" ng-class="{'is-active': currentStateSamehada()}">Samehadaku</a>
-					<a href="/index.html?state=conanwebid" ng-click="state = 'conanwebid'" class="mdl-layout__tab" ng-class="{'is-active': currentStateConanWebId()}">Conan</a>
-					<a href="/index.html?state=oploverz" ng-click="state = 'oploverz'" class="mdl-layout__tab" ng-class="{'is-active': currentStateOploverz()}">Oploverz</a>
+					<a href="/index.html?state=awsubs" ng-click="state = 'awsubs'" class="mdl-layout__tab" ng-class="{'is-active': currentState('awsubs')}">AWSubs</a>
+
+					<a href="/index.html?state=samehadaku" ng-click="state = 'samehadaku'" class="mdl-layout__tab" ng-class="{'is-active': currentState('samehadaku')}">Samehadaku</a>
+
+					<a href="/index.html?state=conanwebid" ng-click="state = 'conanwebid'" class="mdl-layout__tab" ng-class="{'is-active': currentState('conanwebid')}">Conan</a>
+
+					<a href="/index.html?state=oploverz" ng-click="state = 'oploverz'" class="mdl-layout__tab" ng-class="{'is-active': currentState('oploverz')}">Oploverz</a>
+
+					<a href="/index.html?state=awbatch" ng-click="state = 'awbatch'" class="mdl-layout__tab" ng-class="{'is-active': currentState('awbatch')}">AWBatch</a>
+
 					<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="reload" ng-click="reloadPage()">
 						<i class="material-icons" role="presentation">refresh</i>
 						<span class="visuallyhidden">Add</span>
 					</button>
 				</div>
 			</header>
-		<main class="mdl-layout__content">
-		<div class="mdl-layout__tab-panel is-active" id="awsubs-page">
-			<!-- Section Start -->
-			<section class="container" style="margin-bottom: 200px;">
-				<div class="row">
-					<div class="col-md-4 hide-sm hide-xs">
-						<form action="#" >
-							<h4>Search</h4>
-							<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-								<input class="mdl-textfield__input" type="text" id="search">
-								<label class="mdl-textfield__label" for="search">Cari Disini</label>
+			<main class="mdl-layout__content">
+				<div class="mdl-layout__tab-panel is-active" id="awsubs-page">
+					<!-- Section Start -->
+					<section class="container" style="margin-bottom: 200px;">
+						<div class="row">
+							<div class="col-md-4 hide-sm hide-xs">
+								<form action="#" >
+									<h4>Search</h4>
+									<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+										<input class="mdl-textfield__input" type="text" id="search">
+										<label class="mdl-textfield__label" for="search">Cari Disini</label>
+									</div>
+								</form>
 							</div>
-						</form>
-					</div>
-					<div class="col-md-8 col-xs-12">
-						<h4>List Update</h4>
+							<div class="col-md-8 col-xs-12">
+								<h4>List Update</h4>
 
-						<div class="mdl-spinner mdl-js-spinner is-active" id="loading-indicator" data-loading></div>
-						
-						<section class="mdl-grid mdl-grid--no-spacing mdl-shadow--2dp relative"
-						ng-repeat="anime in animes"
-						>
-							<header 
-							class="section__play-btn mdl-cell mdl-cell--4-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white" 
-							ng-style="{'background':'url({{anime.thumbnail}}) center/cover'}">
-							</header>
-							<div class="mdl-card mdl-cell mdl-cell--8-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
-								<div class="mdl-card__supporting-text">
-									<a href="{{anime.link}}" style="text-decoration: none;"><h4>{{anime.title}}</h4></a>
-									Release Date: {{anime.release}}
-								</div>
-								<div class="mdl-card__actions">
-									<a href="{{anime.link}}" class="mdl-button">Read More</a>
+								<div class="mdl-spinner mdl-js-spinner is-active" id="loading-indicator" data-loading></div>
+								
+								<div infinite-scroll='nyanime.nextPage()' infinite-scroll-disabled='nyanime.busy' infinite-scroll-distance='1'
+								infinite-scroll-container="'.mdl-layout'">
+								
+								<section class="mdl-grid mdl-grid--no-spacing mdl-shadow--2dp relative"
+								ng-repeat="anime in nyanime.items"
+								>
+									<header 
+									class="section__play-btn mdl-cell mdl-cell--4-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white" 
+									ng-style="{'background':'url({{anime.thumbnail}}) center/cover'}">
+									</header>
+									<div class="mdl-card mdl-cell mdl-cell--8-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+										<div class="mdl-card__supporting-text">
+											<a href="{{anime.link}}" style="text-decoration: none;"><h4>{{anime.title}}</h4></a>
+											Release Date: {{anime.release}}
+										</div>
+										<div class="mdl-card__actions">
+											<a href="{{anime.link}}" class="mdl-button">Read More</a>
+										</div>
+									</div>
+								</section>
+
+								<div class="row" style="margin-top: 16px;">
+									<a class="mdl-button mdl-js-button mdl-button--primary" style="margin: 4px 8px;float:right;" ng-href="{{nextUrl()}}">Next <i class="material-icons">navigate_next</i></a>
 								</div>
 							</div>
-						</section>
-
-						<div class="row" style="margin-top: 16px;">
-							<a class="mdl-button mdl-js-button mdl-button--primary" style="margin: 4px 8px;float:right;" ng-href="{{nextUrl()}}">Next <i class="material-icons">navigate_next</i></a>
 						</div>
-					</div>
+					</section>
+					
 				</div>
-			</section>
-			
-		</div>
-		<div class="mdl-layout__tab-panel" id="samehadaku-page">
-			<section class="section--center mdl-grid mdl-grid--no-spacing">
-			<div class="mdl-cell mdl-cell--12-col">
+				<div class="mdl-layout__tab-panel" id="samehadaku-page">
+					<section class="section--center mdl-grid mdl-grid--no-spacing">
+					<div class="mdl-cell mdl-cell--12-col">
 
-			</div>
-			</section>
-		</div>
+					</div>
+					</section>
+				</div>
 
 
-		<footer class="mdl-mega-footer">
-			<div class="mdl-mega-footer--bottom-section">
-				<div class="mdl-logo">Nyanime Lite &copy; 2017</div>
-				<ul class="mdl-mega-footer--link-list">
-					<li><a href="javascript:void()">Thanks to Awsubs &and; Samehadaku</a></li>
-					<li><a href="#">Help</a></li>
-					<li><a href="https://facebook.com/ryan.hac">Author</a></li>
-				</ul>
-			</div>
-		</footer>
-		<!-- ./Footer -->
-		</main>
+				<footer class="mdl-mega-footer">
+					<div class="mdl-mega-footer--bottom-section">
+						<div class="mdl-logo">Nyanime Lite &copy; 2017</div>
+						<ul class="mdl-mega-footer--link-list">
+							<li><a href="javascript:void()">Thanks to Awsubs &and; Samehadaku</a></li>
+							<li><a href="#">Help</a></li>
+							<li><a href="https://facebook.com/ryan.hac">Author</a></li>
+						</ul>
+					</div>
+				</footer>
+				<!-- ./Footer -->
+			</main>
 	</div>
 
     <!-- Overlay -->
     <a href="http://awsubs.me" target="_blank" id="awsubs-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Goto AWSubs Website</a>
     <a href="http://samehadaku.net" target="_blank" id="samehadaku-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Goto Samehadaku Website</a>
 	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdn.rawgit.com/awsubslite/awsubslite.github.io/f86be915/bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="https://cdn.rawgit.com/awsubslite/awsubslite.github.io/f86be915/bower_components/material-design-lite/material.min.js"></script>
+    <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
 	
 	
 	<script src="app.js"></script>

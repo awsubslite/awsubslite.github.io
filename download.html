@@ -106,10 +106,15 @@
                 </div>
                 <div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
                 <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-                    <a href="/index.html?state=awsubs" ng-click="state = 'awsubs'" class="mdl-layout__tab" ng-class="{'is-active': currentStateAwsubs()}">AWSubs</a>
-                    <a href="/index.html?state=samehadaku" ng-click="state = 'samehadaku'" class="mdl-layout__tab" ng-class="{'is-active': currentStateSamehada()}">Samehadaku</a>
-                    <a href="/index.html?state=conanwebid" ng-click="state = 'conanwebid'" class="mdl-layout__tab" ng-class="{'is-active': currentStateConanWebId()}">Conan</a>
-                    <a href="/index.html?state=oploverz" ng-click="state = 'oploverz'" class="mdl-layout__tab" ng-class="{'is-active': currentStateOploverz()}">Oploverz</a>
+                    <a href="/index.html?state=awsubs" ng-click="state = 'awsubs'" class="mdl-layout__tab" ng-class="{'is-active': currentState('awsubs')}">AWSubs</a>
+
+                    <a href="/index.html?state=samehadaku" ng-click="state = 'samehadaku'" class="mdl-layout__tab" ng-class="{'is-active': currentState('samehadaku')}">Samehadaku</a>
+
+                    <a href="/index.html?state=conanwebid" ng-click="state = 'conanwebid'" class="mdl-layout__tab" ng-class="{'is-active': currentState('conanwebid')}">Conan</a>
+
+                    <a href="/index.html?state=oploverz" ng-click="state = 'oploverz'" class="mdl-layout__tab" ng-class="{'is-active': currentState('oploverz')}">Oploverz</a>
+
+                    <a href="/index.html?state=awbatch" ng-click="state = 'awbatch'" class="mdl-layout__tab" ng-class="{'is-active': currentState('awbatch')}">AWBatch</a>
                 </div>
             </header>
         <main class="mdl-layout__content">
@@ -129,8 +134,9 @@
 
                             <p style="white-space: pre-line;">{{details.sinopsis}}</p>
                             <p style="white-space: pre-line;">{{details.detail}}</p>
+                            <div ng-bind-html="content"></div>
 
-                            <div class="row" ng-repeat="item in details.downloads" style="padding-bottom: 8px;">
+                            <div ng-hide="isSinglePage()" class="row" ng-repeat="item in details.downloads" style="padding-bottom: 8px;">
                                 <h5>{{item.title}}</h5><br>
                                 <div class="row">
                                     <a class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast" ng-repeat="button in item.link" href="{{button.link}}" style="margin: 4px 8px;max-width: 200px;color: #FFF !important;text-align: left;  ">{{button.title}}</a>
