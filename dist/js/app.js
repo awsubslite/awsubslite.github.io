@@ -30,7 +30,7 @@ function getQueryParams() {
 }
 
 
-angular.module('awsubslite-app', []).controller('awsubslite-app-controller', function($scope, $http) {
+angular.module('awsubslite-app', ['infinite-scroll']).controller('awsubslite-app-controller', function($scope, $http, NyanimeService) {
 	var query = getQueryParams();
 	$scope.animes;
 
@@ -45,20 +45,10 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
 		return (query.state == thisState);
 	}
 
-	if (query.page == undefined) {
-		$http.get(website.server + $scope.state + '/getHome').then(function (response) {
-			$scope.animes = response.data.anime;
-		});
-
-	} else {
-		if (/^\d+$/.test(query.page)) {
-			var i = parseInt(query.page);
-
-			$http.get(website.server + $scope.state + '/getHome/' + i).then(function (response) {
-				$scope.animes = response.data.anime;
-			});
-		}
-	}
+	$scope.nyanime = new NyanimeService($scope.state, function(index) {
+		query.page = index;
+		console.log(query.page);
+	});
 
 	$scope.nextUrl = function() {
 		if (query.page == undefined) {
@@ -81,22 +71,8 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
 	$scope.state = query.state;
 
 	$scope.currentState = function(thisState) {
-		console.log(query.state == thisState);
 		return (query.state == thisState);
 	}
-
-	$scope.currentStateAwsubs = function() {
-		return (query.state == "awsubs") ? true : false;
-	};
-	$scope.currentStateSamehada = function() {
-		return (query.state == "samehadaku") ? true : false;
-	};
-	$scope.currentStateConanWebId = function() {
-		return (query.state == "conanwebid") ? true : false;
-	};
-	$scope.currentStateOploverz = function() {
-		return (query.state == "oploverz") ? true : false;
-	};
 
 	$http.get(website.server +  $scope.state + '/getPage/' + query.page).then(function (response) {
 		$scope.details = response.data;
@@ -107,7 +83,6 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
 		
 		$scope.content = $sce.trustAsHtml($scope.details.fullDetail);
 	});
-	
 }).directive('loading', ['$http' ,function ($http) {
 	return {
 		restrict: 'A',
@@ -146,4 +121,38 @@ angular.module('awsubslite-app', []).controller('awsubslite-app-controller', fun
 			});
 		}
 	};
-}]);
+}]).factory('NyanimeService', function($http, $window) {
+	var NyanimeService = function(state, callback) {
+		this.items = [];
+		this.busy = false;
+		this.index = 1;
+		this.state = state;
+		this.callback = callback;
+	};
+
+	NyanimeService.prototype.nextPage = function() {
+		if (this.busy) return;
+		this.busy = true;
+
+		var url = website.server + this.state + '/getHome/' + this.index;
+		$http.get(url).then(function (response) {
+			var localItems = response.data.anime;
+
+			for (var i = 0; i < localItems.length; i++) {
+				this.items.push(localItems[i]);
+			}
+			this.index += 1;
+			this.busy = false;
+
+			this.callback(this.index);
+			$window.history.pushState(null, this.state + ' Page ' + this.index + ' - Nyanime Lite', '/index.html?state=' + this.state + '&page=' + this.index);
+		}.bind(this));
+	};
+
+	return NyanimeService;
+}).config(function($locationProvider) {
+	$locationProvider.html5Mode({
+		requireBase: false,
+		enable: true
+	});
+});
