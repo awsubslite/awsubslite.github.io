@@ -41,12 +41,21 @@ angular.module('awsubslite-app', ['infinite-scroll']).controller('awsubslite-app
 
 	$scope.state = query.state;
 
+	if (query.page == undefined) {
+		$scope.page = 1;
+	} else {
+		if (/^\d+$/.test(query.page)) {
+			$scope.page = parseInt(query.page);
+		}
+	}
+
 	$scope.currentState = function(thisState) {
 		return (query.state == thisState);
 	}
 
-	$scope.nyanime = new NyanimeService($scope.state, function(index) {
+	$scope.nyanime = new NyanimeService($scope.state, $scope.page, function(index) {
 		query.page = index;
+		$scope.page = index;
 		console.log(query.page);
 	});
 
@@ -61,6 +70,10 @@ angular.module('awsubslite-app', ['infinite-scroll']).controller('awsubslite-app
 			}
 		}
 	};
+
+	$scope.pageUrl = function(page) {
+		return '/index.html?state='+$scope.state+'&page=' + page;
+	}
 
 	$scope.reloadPage = function() {
 		document.location.reload();
@@ -122,10 +135,10 @@ angular.module('awsubslite-app', ['infinite-scroll']).controller('awsubslite-app
 		}
 	};
 }]).factory('NyanimeService', function($http, $window) {
-	var NyanimeService = function(state, callback) {
+	var NyanimeService = function(state, index, callback) {
 		this.items = [];
 		this.busy = false;
-		this.index = 1;
+		this.index = index;
 		this.state = state;
 		this.callback = callback;
 	};
@@ -141,11 +154,10 @@ angular.module('awsubslite-app', ['infinite-scroll']).controller('awsubslite-app
 			for (var i = 0; i < localItems.length; i++) {
 				this.items.push(localItems[i]);
 			}
-			this.index += 1;
-			this.busy = false;
 
 			this.callback(this.index);
-			$window.history.pushState(null, this.state + ' Page ' + this.index + ' - Nyanime Lite', '/index.html?state=' + this.state + '&page=' + this.index);
+			this.index += 1;
+			this.busy = false;
 		}.bind(this));
 	};
 

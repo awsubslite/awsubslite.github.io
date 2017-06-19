@@ -1,0 +1,22 @@
+{
+  "dir": "ltr",
+  "lang": "en",
+  "name": "Nyanime Lite Web Mirror",
+  "scope": "/",
+  "display": "standalone",
+  "start_url": "https://awsubslite.github.io/",
+  "short_name": "Nyanime Lite",
+  "theme_color": "black",
+  "description": "Website Mirror download anime bahasa indonesia gratis, Nyanime Lite tersedia gratis dan tanpa iklan",
+  "orientation": "any",
+  "background_color": "#3372DF",
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "images/android-desktop.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
