@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="awsubslite-app" ng-controller="awsubslite-download-controller">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="request feature nyanime lite">
+        <meta name="keyword" content="nyanime lite, download anime lite, anime subindo, awsubs, samehadaku, conanwebid, awbatch, oploverz">
+        <meta name="robot" content="follow,index">
+        <meta name="canonical" content="https://awsubslite.github.io/feature.html">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <title>Request Feature - Nyanime Lite</title>
+
+        <!-- Add to homescreen for Chrome on Android -->
+        <meta name="mobile-web-app-capable" content="yes">
+
+        <!-- Add to homescreen for Safari on iOS -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="apple-mobile-web-app-title" content="Nyanime Lite">
+
+        <!-- Tile icon for Win8 (144x144 + tile color) -->
+        <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+        <meta name="msapplication-TileColor" content="#3372DF">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/awsubslite/awsubslite.github.io/3b6cd787/bower_components/material-design-lite/material.min.css">
+
+        <link rel="stylesheet" href="/dist/css/style.min.css?v=1.0.8">
+        <link rel="stylesheet" href="https://cdn.rawgit.com/awsubslite/awsubslite.github.io/73718943/dist/css/bootstrap.min.css">
+
+        <style>
+        #awsubs-source,
+        #samehadaku-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+        #samehadaku-source {
+            margin-bottom: 100px;
+        }
+
+        .awsubslite-app main > .mdl-layout__tab-panel {
+            padding: 0;
+        }
+        .awsubslite-app .thumbnail {
+            height: 300px;
+            background-color: #FFC107;
+        }
+        .awsubslite-app .padding {
+            padding: 16px;
+        }
+        .demo-ribbon {
+          width: 100%;
+          height: 40vh;
+          background-color: #FFC107;
+          -webkit-flex-shrink: 0;
+              -ms-flex-negative: 0;
+                  flex-shrink: 0;
+        }
+        .demo-main {
+            margin-top: -35vh;
+          -webkit-flex-shrink: 0;
+              -ms-flex-negative: 0;
+                  flex-shrink: 0;
+        }
+        .demo-header .mdl-layout__header-row {
+          padding-left: 40px;
+        }
+
+        .demo-container {
+          max-width: 1600px;
+          width: calc(100% - 16px);
+          margin: 0 auto;
+        }
+
+        .demo-content {
+          border-radius: 2px;
+          /*padding: 80px 56px;*/
+          margin-bottom: 80px;
+        }
+
+        .demo-layout.is-small-screen .demo-content {
+          padding: 40px 28px;
+        }
+
+        .demo-content h3 {
+          margin-top: 48px;
+        }
+        </style>
+        <script src="https://cdn.rawgit.com/awsubslite/awsubslite.github.io/c38ce9fd/reaksi.js" async></script>
+    </head>
+
+
+    <body class="awsubslite-app mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+        <div id="fb-root"></div>
+        <script id="facebook-jssdk" src="//connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v2.9&appId=1569441316689138" async></script>
+        
+        
+
+        <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+            <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+                <div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
+                <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+                  <h3><i class="material-icons">flash_on</i> Nyanime Lite</h3>
+                </div>
+                <div class="mdl-layout--large-screen-only mdl-layout__header-row"></div>
+                <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+                    <a href="/index.html?state=awsubs" ng-click="state = 'awsubs'" class="mdl-layout__tab" ng-class="{'is-active': currentState('awsubs')}">AWSubs</a>
+
+                    <a href="/index.html?state=samehadaku" ng-click="state = 'samehadaku'" class="mdl-layout__tab" ng-class="{'is-active': currentState('samehadaku')}">Samehadaku</a>
+
+                    <a href="/index.html?state=conanwebid" ng-click="state = 'conanwebid'" class="mdl-layout__tab" ng-class="{'is-active': currentState('conanwebid')}">Conan</a>
+
+                    <a href="/index.html?state=oploverz" ng-click="state = 'oploverz'" class="mdl-layout__tab" ng-class="{'is-active': currentState('oploverz')}">Oploverz</a>
+
+                    <a href="/index.html?state=awbatch" ng-click="state = 'awbatch'" class="mdl-layout__tab" ng-class="{'is-active': currentState('awbatch')}">AWBatch</a>
+
+                    <a href="/feature.html" class="mdl-layout__tab is-active">Request Feature</a>
+                </div>
+            </header>
+        <main class="mdl-layout__content">
+        <div class="mdl-layout__tab-panel is-active" id="overview">
+            <!-- Section Start -->
+            <div class="demo-ribbon"></div>
+            <section class="demo-main mdl-layout__content" style="display: flex;margin-bottom: 200px;">
+                <div class="demo-container mdl-grid">
+                    <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+
+                    <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
+                        <div class="thumbnail" style="background: url(http://cbsnews2.cbsistatic.com/hub/i/r/2016/02/24/6cecc4dd-3162-414e-9cd1-006170dbccd7/thumbnail/620x350/e9e110b93cd6e08a5ac66171e0f90b18/reactions-graphics.png) center/cover"></div>
+                        
+                        <div class="padding">
+                            <h3>Request Feature</h3>
+                            <p>Gunakan <b>#NyanimeFeature</b> supaya teratur dan dapat segera ditangani!</p>
+
+                            <div class="fb-comments" data-href="https://awsubslite.github.io/feature.html" data-width="100%" data-numposts="5"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </div>
+
+        <footer class="mdl-mega-footer">
+            <div class="mdl-mega-footer--bottom-section">
+                <div class="mdl-logo">Nyanime Lite &copy; 2017</div>
+                <ul class="mdl-mega-footer--link-list">
+                    <li><a href="javascript:void()">Thanks to Awsubs &and; Samehadaku</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="https://facebook.com/ryan.hac">Author</a></li>
+                </ul>
+            </div>
+        </footer>
+        <!-- ./Footer -->
+        </main>
+    </div>
+
+    <!-- Overlay -->
+    <a href="http://awsubs.me" target="_blank" id="awsubs-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Goto AWSubs Website</a>
+    <a href="http://samehadaku.net" target="_blank" id="samehadaku-source" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">Goto Samehadaku Website</a>
+    
+    <script type="text/javascript" src="https://cdn.rawgit.com/awsubslite/awsubslite.github.io/f86be915/bower_components/material-design-lite/material.min.js"></script>    
+    
+    <script src="/dist/js/app.min.js?v=1.0.8"></script>
+    </body>
+</html>

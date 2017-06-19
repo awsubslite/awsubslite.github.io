@@ -4,4 +4,4 @@
 r}))})})(window,localStorage,navigator,screen,document,encodeURIComponent);
 
 var galite = galite || {};
-galite.UA = 'UA-100878639-1'; 
+galite.UA = 'UA-100878639-1';
