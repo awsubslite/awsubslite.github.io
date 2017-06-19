@@ -150,9 +150,4 @@ angular.module('awsubslite-app', ['infinite-scroll']).controller('awsubslite-app
 	};
 
 	return NyanimeService;
-}).config(function($locationProvider) {
-	$locationProvider.html5Mode({
-		requireBase: false,
-		enable: true
-	});
 });
